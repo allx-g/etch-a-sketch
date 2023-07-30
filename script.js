@@ -8,7 +8,7 @@ sizeButton.addEventListener('click', resizeGrid);
 makeGrid(DEFAULT_GRID_SIZE, CONTAINER_SIZE);
 
 function makeGrid(gridSize, containerSize) {
-    const blockSize = CONTAINER_SIZE / gridSize;
+    const blockSize = containerSize / gridSize;
 
     for (let row = 0; row < gridSize; row++) {
         const row = createRow();
