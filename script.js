@@ -1,13 +1,23 @@
 const grid = document.querySelector('.container');
 const sizeButton = document.querySelector('button#size');
+const colorPicker = document.querySelector('#favcolor');
+let penColor = colorPicker.defaultValue;
+
 const CONTAINER_SIZE = 900;
 const DEFAULT_GRID_SIZE = 16;
 
+colorPicker.addEventListener('input', getColor)
 sizeButton.addEventListener('click', resizeGrid);
 
-makeGrid(DEFAULT_GRID_SIZE, CONTAINER_SIZE);
+createGrid(DEFAULT_GRID_SIZE, CONTAINER_SIZE);
 
-function makeGrid(gridSize, containerSize) {
+function getColor(e) {
+    const colorPicker = e.target;
+    let color = colorPicker.value;
+    penColor = color;
+}
+
+function createGrid(gridSize, containerSize) {
     const blockSize = containerSize / gridSize;
 
     for (let row = 0; row < gridSize; row++) {
@@ -49,7 +59,7 @@ function deleteGrid() {
 function resizeGrid(e) {
     gridSize = getSize();
     deleteGrid(grid);
-    makeGrid(gridSize, CONTAINER_SIZE);
+    createGrid(gridSize, CONTAINER_SIZE);
 }
 
 function getSize() {
@@ -73,5 +83,5 @@ function validateSize(size) {
 
 function fill(e) {
     const block = e.target;
-    block.style.cssText += "background-color: black";
+    block.style.cssText += `background-color: ${penColor};`;
 }
