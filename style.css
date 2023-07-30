@@ -4,14 +4,16 @@
     padding: 0;
 }
 
-/* Create grid */
+.container {
+    width: 900px;
+    height: 900px;
+}
+
+/* Style grid */
 .row  {
     display: flex;
-
 }
 
 .block {
-    width: 30px;
-    height: 30px;
     border: 1px solid black;
 }
