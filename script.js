@@ -1,15 +1,29 @@
 const grid = document.querySelector('.container');
 const sizeButton = document.querySelector('button#size');
+const randomizeButton = document.querySelector('button#random');
 const colorPicker = document.querySelector('#favcolor');
+
 let penColor = colorPicker.defaultValue;
+let fillRandomly = false;
 
 const CONTAINER_SIZE = 900;
 const DEFAULT_GRID_SIZE = 16;
 
 colorPicker.addEventListener('input', getColor)
 sizeButton.addEventListener('click', resizeGrid);
+randomizeButton.addEventListener('click', toggleRandomColors);
 
 createGrid(DEFAULT_GRID_SIZE, CONTAINER_SIZE);
+
+function toggleRandomColors(e) {
+    if (!fillRandomly) {
+        fillRandomly = true;
+    }
+    else if (fillRandomly) {
+        fillRandomly = false;
+        penColor = colorPicker.value;
+    }
+}
 
 function getColor(e) {
     const colorPicker = e.target;
@@ -83,5 +97,11 @@ function validateSize(size) {
 
 function fill(e) {
     const block = e.target;
+    if (fillRandomly) {
+        let red = Math.floor(Math.random() * 255);
+        let green = Math.floor(Math.random() * 255);
+        let blue = Math.floor(Math.random() * 255);
+        penColor = `rgb(${red},${green},${blue})`;
+    }
     block.style.cssText += `background-color: ${penColor};`;
 }
