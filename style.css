@@ -17,3 +17,17 @@
 .block {
     border: 1px solid black;
 }
+
+button,
+input {
+    font-size: 20px;
+}
+
+button {
+    padding: 10px 20px;
+}
+
+#favcolor {
+    width: 40px;
+    height: 40px;
+}
